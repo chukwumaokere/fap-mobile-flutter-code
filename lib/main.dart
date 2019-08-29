@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:url_launcher/url_launcher.dart' as URL_Launcher;
 
 //String url = 'https://crm.fapaluminum.com/warehouse';
-String url = "https://devl06.borugroup.com/fapdev/new-app/";
+String url = "https://devl06.borugroup.com/cokere/new-app/#!/login";
 
 void main() => runApp(MyApp());
 
@@ -43,6 +44,7 @@ class MyHomePage extends StatefulWidget {
 
 class NewWeb extends State<MyHomePage> {
   final webview = FlutterWebviewPlugin();
+  
 
   TextEditingController controller = TextEditingController(text: url);
 
@@ -82,7 +84,17 @@ class NewWeb extends State<MyHomePage> {
 // TODO: implement initState
     super.initState();
     webview.close();
-    webview.launch("https://devl06.borugroup.com/cokere/new-app/#!/login");
+    webview.launch(url);
+    //webview.onStateChanged
+    webview.onUrlChanged.listen((String url){
+        if(url.contains('tel')){
+          // need to stop loading at this point so it doesnt show net
+          
+          webview.stopLoading();
+          webview.stopLoading();
+          URL_Launcher.launch(url);
+        }
+    });
     controller.addListener(() {
       url = controller.text;
     });
