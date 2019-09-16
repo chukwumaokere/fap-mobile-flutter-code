@@ -1,28 +1,22 @@
 import 'dart:async';
-import 'package:url_launcher/url_launcher.dart' as URL_Launcher;
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 const kAndroidUserAgent =
     'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
 
-String selectedUrl = 'https://devl06.borugroup.com/cokere/new-app/#!/';
+String selectedUrl = 'https://damp-coast-35782.herokuapp.com';
 
 // ignore: prefer_collection_literals
 final Set<JavascriptChannel> jsChannels = [
   JavascriptChannel(
       name: 'Print',
       onMessageReceived: (JavascriptMessage message) {
-        if(message.message == 'callSupport'){
-          print(message.message);
-          launchPhone();
-        }
+        print(message.message);
       }),
 ].toSet();
-
-launchPhone(){
-  URL_Launcher.launch("tel:17733072548");
-}
 
 void main() => runApp(MyApp());
 
@@ -37,19 +31,45 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-       // '/': (_) => const MyHomePage(title: 'Flutter WebView Demo'),
-        '/': (_) {
+        '/': (_) => const MyHomePage(title: 'Flutter WebView Demo'),
+        '/widget': (_) {
           return WebviewScaffold(
             url: selectedUrl,
             javascriptChannels: jsChannels,
+            appBar: AppBar(
+              title: const Text('Widget WebView'),
+            ),
             withZoom: true,
             withLocalStorage: true,
-            withJavascript: true,
             hidden: true,
             initialChild: Container(
-              color: Colors.white,
+              color: Colors.redAccent,
               child: const Center(
-                child: Text('Loading...'),
+                child: Text('Waiting.....'),
+              ),
+            ),
+            bottomNavigationBar: BottomAppBar(
+              child: Row(
+                children: <Widget>[
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back_ios),
+                    onPressed: () {
+                      flutterWebViewPlugin.goBack();
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_forward_ios),
+                    onPressed: () {
+                      flutterWebViewPlugin.goForward();
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.autorenew),
+                    onPressed: () {
+                      flutterWebViewPlugin.reload();
+                    },
+                  ),
+                ],
               ),
             ),
           );
@@ -154,7 +174,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     _onStateChanged =
         flutterWebViewPlugin.onStateChanged.listen((WebViewStateChanged state) {
-          print(state.type);
       if (mounted) {
         setState(() {
           _history.add('onStateChanged: ${state.type} ${state.url}');
