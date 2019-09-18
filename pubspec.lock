@@ -49,10 +49,10 @@ packages:
   flutter_webview_plugin:
     dependency: "direct main"
     description:
-      path: flutter_webview_plugin_bk
+      path: flutter_webview_plugin
       relative: true
     source: path
-    version: "0.3.8"
+    version: "0.3.7"
   matcher:
     dependency: transitive
     description:
