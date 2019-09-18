@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:url_launcher/url_launcher.dart' as URL_Launcher;
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+//import 'package:flutter/services.dart';
 
 const kAndroidUserAgent =
     'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
@@ -21,13 +22,18 @@ final Set<JavascriptChannel> jsChannels = [
 ].toSet();
 
 launchPhone(){
-  URL_Launcher.launch("tel:17733072548");
+  URL_Launcher.launch("tel:19547732898");
 }
 
-void main() => runApp(MyApp());
+void main() {
+  SafeArea(child: MyApp(),top: true,);
+  //SystemChrome.setEnabledSystemUIOverlays([]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   final flutterWebViewPlugin = FlutterWebviewPlugin();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +52,11 @@ class MyApp extends StatelessWidget {
             withLocalStorage: true,
             withJavascript: true,
             hidden: true,
+            scrollBar: false,
+            //appCacheEnabled: false,
+            //clearCache: true,
             initialChild: Container(
-              color: Colors.white,
+              color: Colors.white10,
               child: const Center(
                 child: Text('Loading...'),
               ),
@@ -71,6 +80,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Instance of WebView plugin
   final flutterWebViewPlugin = FlutterWebviewPlugin();
+  
+  
 
   // On destroy stream
   StreamSubscription _onDestroy;
@@ -102,6 +113,27 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     flutterWebViewPlugin.close();
+    flutterWebViewPlugin.resize(Rect.fromLTRB(
+              MediaQuery.of(context).padding.left, /// for safe area
+              MediaQuery.of(context).padding.top, /// for safe area
+              MediaQuery.of(context).size.width + 1, /// add one to make it fullscreen
+              MediaQuery.of(context).size.height,
+            ));
+    flutterWebViewPlugin.onStateChanged.listen((WebViewStateChanged state) {
+          if(state.type == WebViewState.finishLoad) {
+            flutterWebViewPlugin.resize(Rect.fromLTRB(
+              MediaQuery.of(context).padding.left, /// for safe area
+              MediaQuery.of(context).padding.top, /// for safe area
+              MediaQuery.of(context).size.width + 1, /// add one to make it fullscreen
+              MediaQuery.of(context).size.height,
+            ));
+          }
+          print('state changing to: ${state.type}');
+    });
+
+    flutterWebViewPlugin.onStateChanged.listen((state) async {
+      print('state changing to: ${state.type}');
+    });
 
     _urlCtrl.addListener(() {
       selectedUrl = _urlCtrl.text;
@@ -118,6 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Add a listener to on url changed
     _onUrlChanged = flutterWebViewPlugin.onUrlChanged.listen((String url) {
+      print('hi');
       if (mounted) {
         setState(() {
           _history.add('onUrlChanged: $url');
@@ -151,10 +184,19 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       }
     });
+    
 
     _onStateChanged =
         flutterWebViewPlugin.onStateChanged.listen((WebViewStateChanged state) {
-          print(state.type);
+          if(state.type == WebViewState.finishLoad) {
+            flutterWebViewPlugin.resize(Rect.fromLTRB(
+              MediaQuery.of(context).padding.left, /// for safe area
+              MediaQuery.of(context).padding.top, /// for safe area
+              MediaQuery.of(context).size.width + 1, /// add one to make it fullscreen
+              MediaQuery.of(context).size.height,
+            ));
+          }
+          print('state changing to: ${state.type}');
       if (mounted) {
         setState(() {
           _history.add('onStateChanged: ${state.type} ${state.url}');
