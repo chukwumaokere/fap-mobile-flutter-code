@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:url_launcher/url_launcher.dart' as URL_Launcher;
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-//import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
 
 const kAndroidUserAgent =
     'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
@@ -27,8 +27,18 @@ launchPhone(){
 
 void main() {
   SafeArea(child: MyApp(),top: true,);
-  //SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.blueAccent[300],
+    statusBarBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.light,
+  ));
   runApp(MyApp());
+  SafeArea(child: MyApp(),top: true,);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.blueAccent[300],
+    statusBarBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.light,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -38,6 +48,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter WebView Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -53,14 +64,6 @@ class MyApp extends StatelessWidget {
             withJavascript: true,
             hidden: true,
             scrollBar: false,
-            //appCacheEnabled: false,
-            //clearCache: true,
-            initialChild: Container(
-              color: Colors.white10,
-              child: const Center(
-                child: Text('Loading...'),
-              ),
-            ),
           );
         },
       },
