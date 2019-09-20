@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>We're requesting camera access for taking photos for service tickets</string>
+	<string>Requesting camera access for taking photos for service tickets</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We're requesting photo library access for uploading photos to service tickets</string>
+	<string>Requesting photo library access for uploading photos to service tickets</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
