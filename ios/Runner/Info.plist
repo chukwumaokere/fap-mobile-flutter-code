@@ -8,9 +8,9 @@
 	<string>Requesting photo library access for uploading photos to service tickets</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleExecutable</key>
 	<key>CFBundleDisplayName</key>
     <string>FAP Portal</string>
+	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.boruapps.fap-app</string>
