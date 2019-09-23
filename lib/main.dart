@@ -17,6 +17,8 @@ final Set<JavascriptChannel> jsChannels = [
         if(message.message == 'callSupport'){
           print(message.message);
           launchPhone();
+        }else{
+          print(message.message);
         }
       }),
 ].toSet();
