@@ -25,7 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_webview_plugin:
     path: './flutter_webview_plugin'
-  url_launcher: ^5.1.2
+  url_launcher: 5.1.2
+  # firebase_messaging: 5.1.5
 
 dev_dependencies:
   flutter_test:

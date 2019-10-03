@@ -3,6 +3,8 @@ import 'package:url_launcher/url_launcher.dart' as URL_Launcher;
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:flutter/services.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
+import 'dart:io';
 
 const kAndroidUserAgent =
     'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
@@ -85,8 +87,38 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Instance of WebView plugin
   final flutterWebViewPlugin = FlutterWebviewPlugin();
-  
-  
+  //FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  /* 
+  void firebaseCloudMessagingListeners() {
+  if (Platform.isIOS) iOSPermission();
+
+  _firebaseMessaging.getToken().then((token){
+    print(token);
+  });
+
+  _firebaseMessaging.configure(
+    onMessage: (Map<String, dynamic> message) async {
+      print('on message $message');
+    },
+    onResume: (Map<String, dynamic> message) async {
+      print('on resume $message');
+    },
+    onLaunch: (Map<String, dynamic> message) async {
+      print('on launch $message');
+    },
+  );
+}
+
+void iOSPermission() {
+  _firebaseMessaging.requestNotificationPermissions(
+      IosNotificationSettings(sound: true, badge: true, alert: true)
+  );
+  _firebaseMessaging.onIosSettingsRegistered
+      .listen((IosNotificationSettings settings)
+  {
+    print("Settings registered: $settings");
+  });
+} */
 
   // On destroy stream
   StreamSubscription _onDestroy;
@@ -116,6 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    //firebaseCloudMessagingListeners();
 
     flutterWebViewPlugin.close();
     flutterWebViewPlugin.resize(Rect.fromLTRB(

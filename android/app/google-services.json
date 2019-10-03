@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "387460657003",
+    "firebase_url": "https://fap-push-notifications.firebaseio.com",
+    "project_id": "fap-push-notifications",
+    "storage_bucket": "fap-push-notifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387460657003:android:c1f431fd27339f650de62e",
+        "android_client_info": {
+          "package_name": "com.boruapps.fapapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387460657003-rkm61g9sjbod25n122fqgignosspvef3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5T2uVdM1_joWbPZXpBqayXKE4fsAhUcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387460657003-rkm61g9sjbod25n122fqgignosspvef3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
