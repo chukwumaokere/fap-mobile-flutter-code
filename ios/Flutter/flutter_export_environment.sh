@@ -1,10 +1,10 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\Users\Chuck\Downloads\flutter_windows_v1.7.8+hotfix.2-stable\flutter"
-export "FLUTTER_APPLICATION_PATH=C:\Users\Chuck\Documents\Flutter\fap_aaw_app"
-export "FLUTTER_TARGET=lib\main.dart"
+export "FLUTTER_ROOT=/Users/chukwumaokere/Downloads/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/chukwumaokere/Downloads/Apps/fap-mobile-flutter-code_bk"
+export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
-export "SYMROOT=${SOURCE_ROOT}/../build\ios"
-export "FLUTTER_FRAMEWORK_DIR=C:\Users\Chuck\Downloads\flutter_windows_v1.7.8+hotfix.2-stable\flutter\bin\cache\artifacts\engine\ios"
+export "SYMROOT=${SOURCE_ROOT}/../build/ios"
+export "FLUTTER_FRAMEWORK_DIR=/Users/chukwumaokere/Downloads/flutter/bin/cache/artifacts/engine/ios-release"
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"

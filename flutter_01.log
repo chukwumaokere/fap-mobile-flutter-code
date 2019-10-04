@@ -1,0 +1,76 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run
+
+## exception
+
+ProcessException: ProcessException: Process "/usr/bin/xcrun" exited abnormally:
+An error was encountered processing the command (domain=IXUserPresentableErrorDomain, code=1):
+This app could not be installed at this time.
+Failed to load Info.plist from bundle at path /Users/chukwumaokere/Library/Developer/CoreSimulator/Devices/B25E5DAD-8F1F-42BE-B2EB-96EC23AD3A87/data/Library/Caches/com.apple.mobile.installd.staging/temp.qeLOlF/extracted/Payload/Runner.app
+Failed to load Info.plist from bundle at path /Users/chukwumaokere/Library/Developer/CoreSimulator/Devices/B25E5DAD-8F1F-42BE-B2EB-96EC23AD3A87/data/Library/Caches/com.apple.mobile.installd.staging/temp.qeLOlF/extracted/Payload/Runner.app
+Underlying error (domain=MIInstallerErrorDomain, code=35):
+	Failed to load Info.plist from bundle at path /Users/chukwumaokere/Library/Developer/CoreSimulator/Devices/B25E5DAD-8F1F-42BE-B2EB-96EC23AD3A87/data/Library/Caches/com.apple.mobile.installd.staging/temp.qeLOlF/extracted/Payload/Runner.app
+  Command: /usr/bin/xcrun simctl install B25E5DAD-8F1F-42BE-B2EB-96EC23AD3A87 /Users/chukwumaokere/Downloads/Apps/fap-mobile-flutter-code/build/ios/iphonesimulator/Runner.app
+
+```
+#0      runCheckedAsync (package:flutter_tools/src/base/process.dart:259:7)
+<asynchronous suspension>
+#1      SimControl.install (package:flutter_tools/src/ios/simulators.dart:145:16)
+#2      IOSSimulator._setupUpdatedApplicationBundle (package:flutter_tools/src/ios/simulators.dart:437:31)
+<asynchronous suspension>
+#3      IOSSimulator.startApp (package:flutter_tools/src/ios/simulators.dart:339:15)
+<asynchronous suspension>
+#4      FlutterDevice.runHot (package:flutter_tools/src/resident_runner.dart:378:54)
+#5      _asyncThenWrapperHelper.<anonymous closure> (dart:async-patch/async_patch.dart:71:64)
+#6      _rootRunUnary (dart:async/zone.dart:1132:38)
+#7      _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#8      _FutureListener.handleValue (dart:async/future_impl.dart:137:18)
+#9      Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:678:45)
+#10     Future._propagateToListeners (dart:async/future_impl.dart:707:32)
+#11     Future._completeWithValue (dart:async/future_impl.dart:522:5)
+#12     Future._asyncComplete.<anonymous closure> (dart:async/future_impl.dart:552:7)
+#13     _rootRun (dart:async/zone.dart:1124:13)
+#14     _CustomZone.run (dart:async/zone.dart:1021:19)
+#15     _CustomZone.runGuarded (dart:async/zone.dart:923:7)
+#16     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:963:23)
+#17     _microtaskLoop (dart:async/schedule_microtask.dart:41:21)
+#18     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50:5)
+#19     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:116:13)
+#20     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:173:5)
+```
+
+## flutter doctor
+
+```
+[32m[✓][39m Flutter (Channel stable, v1.9.1+hotfix.2, on Mac OS X 10.13.6 17G65, locale en-US)
+    [32m•[39m Flutter version 1.9.1+hotfix.2 at /Users/chukwumaokere/Downloads/flutter
+    [32m•[39m Framework revision 2d2a1ffec9 (4 weeks ago), 2019-09-06 18:39:49 -0700
+    [32m•[39m Engine revision b863200c37
+    [32m•[39m Dart version 2.5.0
+
+[31m[✗][39m Android toolchain - develop for Android devices
+    [31m✗[39m Unable to locate Android SDK.
+      Install Android Studio from: https://developer.android.com/studio/index.html
+      On first launch it will assist you in installing the Android SDK components.
+      (or visit https://flutter.dev/setup/#android-setup for detailed instructions).
+      If the Android SDK has been installed to a custom location, set ANDROID_HOME to that location.
+      You may also want to add it to your PATH environment variable.
+
+
+[32m[✓][39m Xcode - develop for iOS and macOS (Xcode 10.1)
+    [32m•[39m Xcode at /Users/chukwumaokere/Downloads/Xcode.app/Contents/Developer
+    [32m•[39m Xcode 10.1, Build version 10B61
+    [32m•[39m CocoaPods version 1.7.5
+
+[33m[!][39m Android Studio (not installed)
+    [32m•[39m Android Studio not found; download from https://developer.android.com/studio/index.html
+      (or visit https://flutter.dev/setup/#android-setup for detailed instructions).
+
+[32m[✓][39m Connected device (1 available)
+    [32m•[39m iPhone 7 Plus • B25E5DAD-8F1F-42BE-B2EB-96EC23AD3A87 • ios • iOS 12.1 (simulator)
+
+[33m![39m Doctor found issues in 2 categories.
+```
